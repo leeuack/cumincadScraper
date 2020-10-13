@@ -20,3 +20,13 @@ with the total number of publications arugment
 $python main(300)
 ```
 
+
+
+Before users run this file, please check the installed packages.
+Users are required to install below:
+
+```
+pandas==0.25.3
+requests==2.22.0
+beautifulsoup4==4.9.3
+```
