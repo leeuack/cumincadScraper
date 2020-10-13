@@ -30,3 +30,10 @@ pandas==0.25.3
 requests==2.22.0
 beautifulsoup4==4.9.3
 ```
+
+Sometimes, CumInCAD has connection issue. The average time to extract a publication's information is 2-5 sec.
+If the time is longer than the average one, please stop the crawler and rerun it.
+In this case, users manually change the 'page_number', which is a multiplication of 20. (e.g. 0,20,40,60,80, ...)
+```
+page_number = 40
+```
