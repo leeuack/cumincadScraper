@@ -37,3 +37,7 @@ In this case, users manually change the 'page_number', which is a multiplication
 ```
 page_number = 40
 ```
+
+
+
+This repository has been developed by [JinmoRhee](www.jinmorhee.net)
