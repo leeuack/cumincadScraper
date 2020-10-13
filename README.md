@@ -9,12 +9,14 @@ The default value of the argument is 15260, since currently (2020.10.12) the max
 
 To run the file, users can write those codes
 
-'''
+```
 $python main()
-'''
+```
+
 or
 with the total number of publications arugment
-'''
+
+```
 $python main(300)
-'''
+```
 
