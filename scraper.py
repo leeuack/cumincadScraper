@@ -40,13 +40,18 @@ def searchContainment(words, conents):
 def getPapers(main_soup):
     '''find all papers link and return the list of papers'''
     form = main_soup.find('form', attrs={'name': 'main'})
-    papers = form.find_all('a')[::2]
+    children = form.find_all('b')       #gets tag <b>
+    papers = []
+    for child in children:              #gets the parent of tag <b>, which is tag <a>. This removes other unecessary <a> tags
+        parent = child.parent
+        if parent.get('href') != None:  #if tag <a> has a valid url
+            papers.append(parent)       #then add tag <a> to the list
     return papers
 
 def getPaperInfo(paper):
     '''extract information of the input paper, input is id of a paper'''
     data = []
-    paper_site = str(paper).replace("<", "*").replace(">", "*").split("*")[1][8:-1] # generate paper url
+    paper_site = paper.get('href') # generate paper url
 
     #scraping
     paper_request = requests.get(paper_site)
@@ -69,7 +74,7 @@ def countPapers(folder):
     '''count the number of currently scraped paper'''
     return len(os.listdir(folder))
 
-def main(total=15260):
+def main(total=16336):
     '''wrapper function of scraper'''
     page_number = 0
     count = 0
@@ -88,7 +93,7 @@ def main(total=15260):
             getPaperInfo(paper)
             count += 1
             end = time.time()
-            print("{}/15176        {} papers,      {} sec".format(count, countPapers(folder), end - start))
+            print("{}/16336        {} papers,      {} sec".format(count, countPapers(folder), end - start))
         page_number += 20
 
 
