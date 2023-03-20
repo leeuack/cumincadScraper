@@ -13,13 +13,10 @@ import time
 # ----------------------------------------------------------------------------------------------------------------------
 
 folder = "raw_data/"
-valid_paper = '20221120_all_valid_papers.csv'
+valid_paper = 'all_valid_papers.csv'
 
 #please change the search words
-search_words = ["deep learning", "deep neural network", "artificial neural network", 
-                "neural network", "multi-layer perceptron", "convolutional neural network",
-                "recurrent neural network", "generative adversarial network", "autoencoder",
-                "self-organizing map", "boltzmann machine"]
+search_words = ["arhcitecture"]
 
 
 def searchWord(w):
