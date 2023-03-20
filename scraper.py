@@ -13,16 +13,13 @@ import time
 # ----------------------------------------------------------------------------------------------------------------------
 
 folder = "raw_data/"
+valid_paper = '20221120_all_valid_papers.csv'
 
 #please change the search words
-search_words = ["deep learning", "deep-learning", "deep-learning-based",
-                "deep neural network", "deep neural networks",
-                "artificial neurpip freeze > requirements.txtal network", "artificial neural networks",
-                "neural network", "neural networks",
-                "gan", "generative adversarial network", "generative adversarial networks",
-                "vgg", "cnn",
-                "imagenet", "image-net", "image net",
-                "unet", "u-net", "u net"]
+search_words = ["deep learning", "deep neural network", "artificial neural network", 
+                "neural network", "multi-layer perceptron", "convolutional neural network",
+                "recurrent neural network", "generative adversarial network", "autoencoder",
+                "self-organizing map", "boltzmann machine"]
 
 
 def searchWord(w):
@@ -69,10 +66,11 @@ def countPapers(folder):
     '''count the number of currently scraped paper'''
     return len(os.listdir(folder))
 
-def main(total=15260):
+def main(total=15260): # the total number of the paper is changing, so users should check the total number of the paper before run this function
     '''wrapper function of scraper'''
     page_number = 0
     count = 0
+    results_per_page = 20  # the default values of results per page is 20
     while page_number <= total:
         # access the main site, e.g. CumInCAD
         main_site = "http://papers.cumincad.org/cgi-bin/works/Search?&first={}".format(page_number)
@@ -88,8 +86,8 @@ def main(total=15260):
             getPaperInfo(paper)
             count += 1
             end = time.time()
-            print("{}/15176        {} papers,      {} sec".format(count, countPapers(folder), end - start))
-        page_number += 20
+            print("{}/{}        {} papers,      {} sec".format(count, total, countPapers(folder), end - start))
+        page_number += results_per_page   # 20 is the hardcoded number 
 
 
 if __name__ == "__main__":
